@@ -5,24 +5,13 @@ body {
 	font-size: 16px;
 }
 
-.header {
-	border: 2px solid black;
-	margin: 10px;
-	padding: 20px;
-}
-
-.content {
-	border: 2px solid red;
-	min-width: 600px;
-	max-width: 1024px;
-	margin: 10px;
-	padding: 20px;
-}
-
-#imgView {
+#imgView{
 	border: 2px solid orange;
+	position: relative;
 	width: 400px;
 	height: 250px;
+	margin: 0 auto; 
+	padding: 0;
 	overflow: hidden;
 }
 
