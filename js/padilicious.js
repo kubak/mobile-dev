@@ -125,7 +125,7 @@
 			swipedElement.style.backgroundColor = 'orange';
 			
 			var output = document.getElementById('output-text');
-			var currentPos = parseInt(gallery.style.left);
+			var currentPos = gallery.style.left;
 			output.innerHTML = 'currentPos = ' + currentPos;
 			
 			swipeLeft();
