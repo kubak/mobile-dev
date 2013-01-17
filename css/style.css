@@ -40,3 +40,23 @@ body {
 	display: inline;
 	float: left;
 }
+
+.button{
+	width: 100px;
+	height: 25px;
+	border: 2px solid black;
+	padding: 10px;
+	position: relative;
+	margin-left: 452px;
+	margin-top: 25px;
+	text-align: center;
+	cursor: pointer;
+}
+
+#left-btn{
+	background-color: pink;
+}
+
+#right-btn{
+	background-color: aquamarine;
+}

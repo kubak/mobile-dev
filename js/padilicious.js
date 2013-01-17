@@ -2,6 +2,9 @@
 	// Courtesy of PADILICIOUS.COM and MACOSXAUTOMATION.COM
 	
 	// this script can be used with one or more page elements to perform actions based on them being swiped with a single finger
+	
+$(function () {
+///////////////////////////////////////////////////////////////
 
 	var triggerElementID = null; // this variable is used to identity the triggering element
 	var fingerCount = 0;
@@ -18,7 +21,7 @@
 	var swipeAngle = null;
 	var swipeDirection = null;
 	
-	var distance = 10;
+	var distance = 50;
 	
 	// The 4 Touch Event Handlers
 	
@@ -122,14 +125,12 @@
 		if ( swipeDirection == 'left' ) {
 			// REPLACE WITH YOUR ROUTINES
 			console.log('SWIPE LEFT!');
-			// gallery.style.left = '-20px'; // this line works
-			gallery.style.left -= distance + 'px';
+			slideLeft();
 			swipedElement.style.backgroundColor = 'orange';
 		} else if ( swipeDirection == 'right' ) {
 			// REPLACE WITH YOUR ROUTINES
 			console.log('SWIPE RIGHT!');
-			// gallery.style.left = '20px'; // this line works
-			gallery.style.left += distance + 'px';
+			slideRight();
 			swipedElement.style.backgroundColor = 'green';
 		} else if ( swipeDirection == 'up' ) {
 			// REPLACE WITH YOUR ROUTINES
@@ -142,3 +143,39 @@
 		}
 		console.log('processingRoutine finished');
 	}
+	
+	var slideLeft = function(){
+		var currentPos = parseInt($('#gallery').css("left"));
+		
+		if(currentPos <= -1000){
+			currentPos = -1000;
+			newDistance = null;
+			$('#gallery').css("left" , currentPos + 'px'); // these work
+		}
+		else{
+			var newDistance = currentPos - distance;
+			$('#gallery').css("left" , newDistance + 'px'); // these work
+		}
+		console.log('LEFT BTN: currentPos = ' + currentPos + '; newDistance = ' + newDistance + ';');
+	};
+	
+	var slideRight = function(){
+		var currentPos = parseInt($('#gallery').css("left"));
+		
+		if(currentPos >= 0){
+			currentPos = 0;
+			newDistance = null;
+			$('#gallery').css("left" , currentPos + 'px'); // these work
+		}
+		else{
+			var newDistance = currentPos + distance;
+			$('#gallery').css("left" , newDistance + 'px'); // these work
+		}
+		console.log('RIGHT BTN: currentPos = ' + currentPos + '; newDistance = ' + newDistance + ';');
+	};
+	
+	$('#left-btn').click(slideLeft);
+	$('#right-btn').click(slideRight);
+	
+///////////////////////////////////////////////////////////////
+});
