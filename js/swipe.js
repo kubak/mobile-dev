@@ -38,7 +38,7 @@ var Toucher = {
 		} else {
 			swipeDirection = 'up';
 		}
-        console.log(swipeDirection);
+        alert(swipeDirection);
     },
     touchCancel : function (event) {
         Toucher.startX = Toucher.startY = Toucher.currentX = Toucher.currentY = 0;
