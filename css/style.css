@@ -5,6 +5,17 @@ body {
 	font-size: 16px;
 }
 
+#touchArea
+{
+	width: 1024px;
+	height: 582px;
+	border: 2px solid black;
+	background: grey;
+	position: relative;
+	margin: 0 auto;
+	padding: 0;
+}
+
 #imgView{
 	border: 4px solid #111;
 	background-color: #333;
@@ -21,6 +32,8 @@ body {
 	height: 150px;
 	margin-top: 50px;
 	padding: 0px;
+	position: relative;
+	left: 0px;
 }
 
 .gallery-img {

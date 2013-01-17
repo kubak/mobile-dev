@@ -18,6 +18,8 @@
 	var swipeAngle = null;
 	var swipeDirection = null;
 	
+	var distance = 10;
+	
 	// The 4 Touch Event Handlers
 	
 	// NOTE: the touchStart handler should also receive the ID of the triggering element
@@ -115,14 +117,19 @@
 	
 	function processingRoutine() {
 		var swipedElement = document.getElementById(triggerElementID);
+		var gallery = document.getElementById('gallery');
 		
 		if ( swipeDirection == 'left' ) {
 			// REPLACE WITH YOUR ROUTINES
 			console.log('SWIPE LEFT!');
+			// gallery.style.left = '-20px'; // this line works
+			gallery.style.left -= distance + 'px';
 			swipedElement.style.backgroundColor = 'orange';
 		} else if ( swipeDirection == 'right' ) {
 			// REPLACE WITH YOUR ROUTINES
 			console.log('SWIPE RIGHT!');
+			// gallery.style.left = '20px'; // this line works
+			gallery.style.left += distance + 'px';
 			swipedElement.style.backgroundColor = 'green';
 		} else if ( swipeDirection == 'up' ) {
 			// REPLACE WITH YOUR ROUTINES
