@@ -2,9 +2,6 @@
 	// Courtesy of PADILICIOUS.COM and MACOSXAUTOMATION.COM
 	
 	// this script can be used with one or more page elements to perform actions based on them being swiped with a single finger
-	
-$(function () {
-///////////////////////////////////////////////////////////////
 
 	var triggerElementID = null; // this variable is used to identity the triggering element
 	var fingerCount = 0;
@@ -22,6 +19,7 @@ $(function () {
 	var swipeDirection = null;
 	
 	var distance = 50;
+	var gallery = document.getElementById('gallery');
 	
 	// The 4 Touch Event Handlers
 	
@@ -120,18 +118,24 @@ $(function () {
 	
 	function processingRoutine() {
 		var swipedElement = document.getElementById(triggerElementID);
-		var gallery = document.getElementById('gallery');
 		
 		if ( swipeDirection == 'left' ) {
 			// REPLACE WITH YOUR ROUTINES
 			console.log('SWIPE LEFT!');
-			slideLeft();
 			swipedElement.style.backgroundColor = 'orange';
+			
+			var output = document.getElementById('output-text');
+			var currentPos = parseInt(gallery.style.left);
+			output.innerHTML = 'currentPos = ' + currentPos;
+			
+			swipeLeft();
+			
 		} else if ( swipeDirection == 'right' ) {
 			// REPLACE WITH YOUR ROUTINES
 			console.log('SWIPE RIGHT!');
-			slideRight();
 			swipedElement.style.backgroundColor = 'green';
+			swipeRight();
+			
 		} else if ( swipeDirection == 'up' ) {
 			// REPLACE WITH YOUR ROUTINES
 			console.log('SWIPE UP!');
@@ -144,8 +148,52 @@ $(function () {
 		console.log('processingRoutine finished');
 	}
 	
+	function swipeLeft(){
+		var currentPos = parseInt(gallery.style.left);
+		var newDistance;
+		
+		var output = document.getElementById('output-text');
+		
+		output.innerHTML = 'currentPos = ' + currentPos;
+		
+		if(currentPos <= -1000){
+			currentPos = -1000;
+			newDistance = null;
+			gallery.style.left = currentPos + 'px';
+		}
+		else{
+			newDistance = currentPos - distance;
+			gallery.style.left = newDistance + 'px'
+		}
+		
+		output.innerHTML += '; newDistance = ' + newDistance;
+		console.log('LEFT BTN: currentPos = ' + currentPos + '; newDistance = ' + newDistance + ';');
+	};
+	
+	function swipeRight(){
+		var currentPos = parseInt(gallery.style.left);
+		var newDistance;
+		
+		if(currentPos >= 0){
+			currentPos = 0;
+			newDistance = null;
+			gallery.style.left = currentPos + 'px';
+		}
+		else{
+			newDistance = currentPos - distance;
+			gallery.style.left = newDistance + 'px'
+		}
+		console.log('RIGHT BTN: currentPos = ' + currentPos + '; newDistance = ' + newDistance + ';');
+	};
+	
+	
+// JQUERY START
+$(function () {
+///////////////////////////////////////////////////////////////
+	
 	var slideLeft = function(){
 		var currentPos = parseInt($('#gallery').css("left"));
+		var newDistance;
 		
 		if(currentPos <= -1000){
 			currentPos = -1000;
@@ -153,14 +201,19 @@ $(function () {
 			$('#gallery').css("left" , currentPos + 'px'); // these work
 		}
 		else{
-			var newDistance = currentPos - distance;
+			newDistance = currentPos - distance;
 			$('#gallery').css("left" , newDistance + 'px'); // these work
 		}
 		console.log('LEFT BTN: currentPos = ' + currentPos + '; newDistance = ' + newDistance + ';');
+		
+			var output = document.getElementById('output');
+			var currentPos = parseInt(gallery.style.left);
+			output.innerHTML = '<p>currentPos = ' + currentPos + '</p>';
 	};
 	
 	var slideRight = function(){
 		var currentPos = parseInt($('#gallery').css("left"));
+		var newDistance;
 		
 		if(currentPos >= 0){
 			currentPos = 0;
@@ -168,7 +221,7 @@ $(function () {
 			$('#gallery').css("left" , currentPos + 'px'); // these work
 		}
 		else{
-			var newDistance = currentPos + distance;
+			newDistance = currentPos + distance;
 			$('#gallery').css("left" , newDistance + 'px'); // these work
 		}
 		console.log('RIGHT BTN: currentPos = ' + currentPos + '; newDistance = ' + newDistance + ';');
