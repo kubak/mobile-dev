@@ -65,15 +65,11 @@ $(function () {
 	document.getElementById('touchArea').ontouchmove = Toucher.touchMove;
 	document.getElementById('touchArea').ontouchcancel = Toucher.touchCancel;
 	
-document.getElementById('leftButton').onclick = clickLeft;
-document.getElementById('rightButton').onclick = clickRight;
-
-function clickLeft(){
-	document.getElementById('textOutput').innerText = 'Click Left';
-};
-
-function clickRight(){
-	document.getElementById('textOutput').innerText = 'Click Right';
-};
-	
+    $("#leftButton").click(function () {
+        $("#textOutput").text('Click Left');
+    });
+    $("#rightButton").click(function () {
+        $("#textOutput").text('Click Right');
+    });
+    
 });
