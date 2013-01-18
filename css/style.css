@@ -53,15 +53,15 @@ body {
 	cursor: pointer;
 }
 
-#left-btn{
+#leftButton{
 	background-color: pink;
 }
 
-#right-btn{
+#rightButton{
 	background-color: aquamarine;
 }
 
-#text-output{
+#textOutput{
 	color: white;
 	border: 2px solid #111;
 	background-color: #333;
