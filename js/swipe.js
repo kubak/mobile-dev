@@ -3,6 +3,8 @@ var Toucher = {
     startY : 0,
     currentX : 0,
     currentY : 0,
+    startTime : 0,
+    currentTime : 0
     touchStart : function (event) {
 		event.preventDefault();
 		Toucher.fingerCount = event.touches.length;
@@ -12,7 +14,7 @@ var Toucher = {
         }
         Toucher.startX = event.touches[0].pageX;
         Toucher.startY = event.touches[0].pageY;
-		
+		Toucher.startTime = +new Date;
     },
     touchMove : function (event) {
 		event.preventDefault();
@@ -21,9 +23,10 @@ var Toucher = {
         }
         Toucher.currentX = event.touches[0].pageX;
         Toucher.currentY = event.touches[0].pageY;
+        Toucher.currentTime = +new Date;
     },
     touchEnd : function (event) {
-		if (Toucher.fingerCount != 1) {
+		if (Toucher.fingerCount != 1 || Toucher.currentX == 0) {
             return false;
         }
 		event.preventDefault();
@@ -48,13 +51,13 @@ var Toucher = {
 		} else {
 			swipeDirection = 'up';
 		}
-		
-       // alert('swipeDirection: ' + swipeDirection + '; event.touches.length: ' + event.touches.length);
-		document.getElementById('textOutput').innerText = 'swipeDirection: ' + swipeDirection + '; event.touches.length: ' + event.touches.length;
+		var time = Toucher.currentTime - Toucher.startTime;
+		// $("#textOutput").text('swipeDirection: ' + swipeDirection + '; event.touches.length: ' + event.touches.length + '; ');
+        $("#textOutput").text('you swiped ' + swipeDirection + ' at speed of ' + (Z/(time/1000)) + ' pixels per second');
 		Toucher.touchCancel();
     },
     touchCancel : function (event) {
-		Toucher.startX = Toucher.startY = Toucher.currentX = Toucher.currentY = 0;
+		Toucher.startX = Toucher.startY = Toucher.currentX = Toucher.currentY = Toucher.startTime = Toucher.currentTime = 0;
     }
 };
 
