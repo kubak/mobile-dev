@@ -61,15 +61,14 @@ body {
 	background-color: aquamarine;
 }
 
-#output{
-	width: 960px;
-	margin-left: 32px;
-	margin-top: 25px;
-	border: 2px solid red;
-	padding: 20px;
-	position: relative;
-}
-
-#output-text{
+#text-output{
 	color: white;
+	border: 2px solid #111;
+	background-color: #333;
+	position: relative;
+	width: 600px;
+	height: 100px;
+	margin: 25px 202px; 
+	padding: 10px;
+	overflow: hidden;
 }
